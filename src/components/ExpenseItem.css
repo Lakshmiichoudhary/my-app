@@ -1,0 +1,21 @@
+.expense-item {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-around; 
+    border: rosybrown;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: gray;
+  }
+  
+  .expense-title {
+    font-size: 18px;
+  }
+  
+  .expense-price {
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
