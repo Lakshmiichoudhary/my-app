@@ -1,3 +1,4 @@
+import ExpenseForm from './ExpenseForm/ExpenseForm';
 import ExpenseItem from './components/ExpenseItem';
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
   return (
     <>
       <h1>Expense Tracker</h1>
+      <ExpenseForm/>
       <ExpenseItem name = {expenses[0].name} price = {expenses[0].price}
       date = {expenses[0].date}/>
       <ExpenseItem name = {expenses[1].name} price = {expenses[1].price}
