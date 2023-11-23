@@ -1,52 +1,57 @@
-import './ExpenseForm.css';
-import React, {useState} from 'react';
-const ExpenseForm = () => {
-    const [enteredTitle,setEnteredTitle] = useState("");
-    const [enterAmount,setEnteredAmount] = useState("");
-    const [enteredDate,setEnteredDate] = useState("");
+import React, { useState } from 'react';
 
-    const AddNewItem = (event) => {
-        setEnteredTitle(event.target.value)
+const ExpenseForm = (props) => {
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
+
+  const addNewItem = (event) => {
+    setEnteredTitle(event.target.value);
+  };
+
+  const amountChange = (event) => {
+    setEnteredAmount(event.target.value);
+  };
+
+  const dateChange = (event) => {
+    setEnteredDate(event.target.value);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate)
     };
 
-    const AmountChange = (event) => {
-        setEnteredAmount(event.target.value)
-    };
+    props.onSaveExp(expenseData); 
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+  };
 
-    const DateChange = (event) => {
-        setEnteredDate(event.target.value)
-    };
-
-    const submitHandler = (event) => {
-        event.preventDefault()
-        const ExpData = {
-            Title : enteredTitle,
-            amount: enterAmount,
-            date: new Date(enteredDate)
-        }
-        console.log(ExpData)
-    };
-    return(
-        <form onSubmit = {submitHandler}>
-        <div className="new_exp">
-            <div className="n_e">
-                <label>Expense Title</label>
-                <input type="text"  onChange = {AddNewItem} />
-            </div>
-            <div className="e_Am">
-                <label>Expense Amount</label>
-                <input type="number" onChange={AmountChange} />
-            </div>
-            <div className="date">
-                <label>Date</label>
-                <input type="date" onChange={DateChange}/>
-            </div>
+  return (
+    <form onSubmit={submitHandler}>
+      <div className="new_exp">
+        <div className="n_e">
+          <label>Expense Title</label>
+          <input type="text" value={enteredTitle} onChange={addNewItem} />
         </div>
-        <div className="action">
-            <button type = "submit"> submit</button>
+        <div className="e_Am">
+          <label>Expense Amount</label>
+          <input type="number" value={enteredAmount} onChange={amountChange} />
         </div>
-        </form>
-    )
-}
+        <div className="date">
+          <label>Date</label>
+          <input type="date" value={enteredDate} onChange={dateChange} />
+        </div>
+      </div>
+      <div className="action">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  );
+};
 
-export default ExpenseForm
+export default ExpenseForm;
