@@ -49,6 +49,7 @@ const ExpenseForm = (props) => {
       </div>
       <div className="action">
         <button type="submit">Submit</button>
+        <button type="click">Cancle</button>
       </div>
     </form>
   );
