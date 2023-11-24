@@ -1,5 +1,6 @@
 import React from 'react';
-import ExpenseItem from './components/ExpenseItem';
+
+import Expense from './components/Expense';
 import NewExpense from './ExpenseForm/NewExpense';
 
 const App = () => {
@@ -18,10 +19,8 @@ const App = () => {
     <>
       <h1>Expense Tracker</h1>
       <NewExpense onAddExp={addExpHandler} />
-      <ExpenseItem name={expenses[0].name} price={expenses[0].price} date={expenses[0].date} />
-      <ExpenseItem name={expenses[1].name} price={expenses[1].price} date={expenses[1].date} />
-      <ExpenseItem name={expenses[2].name} price={expenses[2].price} date={expenses[2].date} />
-    </>
+      <Expense items = {expenses}/>
+    </>  
   );
 };
 
